@@ -4,6 +4,8 @@ var querystring = require('querystring');
 const axios = require('axios');
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger_output.json')
+const PORT = process.env.PORT || 5000
+
 app.use(express.json())
 
 const auth_url = 'https://keycloak-edu-keycloak.apps.openshift-01.knowis.cloud/auth/realms/education/protocol/openid-connect/token';
@@ -50,7 +52,7 @@ app.get('/getByJR',async (req,res) => {
     }
 })
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
  console.log("Node server is running..");
 });
 
