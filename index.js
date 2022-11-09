@@ -2,14 +2,11 @@ var express = require("express"); //requiring express module
 var app = express(); //creating express instance
 var querystring = require('querystring');
 const axios = require('axios');
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./swagger_output.json')
 const PORT = process.env.PORT || 5000
 
 app.use(express.json())
 
 const auth_url = 'https://keycloak-edu-keycloak.apps.openshift-01.knowis.cloud/auth/realms/education/protocol/openid-connect/token';
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 async function getJWTToken(){
     var data = querystring.stringify({
