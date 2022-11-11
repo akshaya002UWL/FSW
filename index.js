@@ -38,13 +38,45 @@ app.get('/getByJR',async (req,res) => {
             'Authorization': 'Bearer '+jwt_token
         }
     });
+
+
     const response = await axiosInstance.get('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/getByJR',{
         params: {
-            jobReqId: req.query.jobReqId
+            jobReqId: req.query.jobReqId,
+            skills:req.query.skills,
+            experience:req.query.experience
         }
       });
     res.send(response.data)
     } catch (error) {
+        console.log(error.response.data);
+        res.status(error.response.status).send(error.response.data)
+    }
+})
+
+app.post('/filterProfiles',async (req,res) => {
+    console.log(typeof req.body);
+    var data = req.body
+    
+    try {
+        var jwt_token = await getJWTToken()
+    const axiosInstance = axios.create({
+        headers: { 
+            'Authorization': 'Bearer '+jwt_token
+        }
+    });
+
+
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/filterProfiles',data,{
+        params: {
+            organization: req.query.organization,
+            skills:req.query.location
+        },
+       
+      });
+    res.send(response.data)
+    } catch (error) {
+        console.log(error.response.data);
         res.status(error.response.status).send(error.response.data)
     }
 })
