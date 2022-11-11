@@ -49,13 +49,11 @@ app.get('/getByJR',async (req,res) => {
       });
     res.send(response.data)
     } catch (error) {
-        console.log(error.response.data);
         res.status(error.response.status).send(error.response.data)
     }
 })
 
 app.post('/filterProfiles',async (req,res) => {
-    console.log(typeof req.body);
     var data = req.body
     
     try {
