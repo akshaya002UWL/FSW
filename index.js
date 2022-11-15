@@ -47,10 +47,10 @@ app.get('/getByJR',async (req,res) => {
             experience:req.query.experience
         }
       });
-        var response = {
+        var api_response = {
             "candidates":response.data
         }
-    res.send(response)
+    res.send(api_response)
     } catch (error) {
         res.status(error.response.status).send(error.response.data)
     }
