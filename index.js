@@ -57,7 +57,7 @@ app.get('/getByJR',async (req,res) => {
 })
 
 app.post('/filterProfiles',async (req,res) => {
-    var data = req.body.candidates
+    //var data = req.body.candidates
     try {
         var jwt_token = await getJWTToken()
     const axiosInstance = axios.create({
@@ -67,7 +67,7 @@ app.post('/filterProfiles',async (req,res) => {
     });
 
 
-    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/filterProfiles',data,{
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/filterProfiles',{},{
         params: {
             organization: req.query.organization,
             skills:req.query.location
@@ -84,7 +84,7 @@ app.post('/filterProfiles',async (req,res) => {
     }
 })
 app.post('/filterAppliedCandidates',async (req,res) => {
-    var data = req.body.candidates
+   // var data = req.body.candidates
     try {
         var jwt_token = await getJWTToken()
     const axiosInstance = axios.create({
@@ -94,7 +94,7 @@ app.post('/filterAppliedCandidates',async (req,res) => {
     });
 
 
-    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/filterprofile/api/hello/activecandidates/filterprofile',{
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/filterprofile/api/hello/activecandidates/filterprofile',{},{
         params: {
            jobReqId: req.query.jobReqId
         },
