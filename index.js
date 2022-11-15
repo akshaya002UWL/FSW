@@ -75,7 +75,10 @@ app.post('/filterProfiles',async (req,res) => {
         },
        
       });
-    res.send(response.data)
+         var api_response = {
+            "candidates":response.data
+        }
+    res.send(api_response)
     } catch (error) {
         console.log(error.response.data);
         res.status(error.response.status).send(error.response.data)
