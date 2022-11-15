@@ -84,6 +84,32 @@ app.post('/filterProfiles',async (req,res) => {
         res.status(error.response.status).send(error.response.data)
     }
 })
+app.post('/filterAppliedCandidates',async (req,res) => {
+    var data = req.body.candidates
+    try {
+        var jwt_token = await getJWTToken()
+    const axiosInstance = axios.create({
+        headers: { 
+            'Authorization': 'Bearer '+jwt_token
+        }
+    });
+
+
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/filterprofile/api/hello/activecandidates/filterprofile',{
+        params: {
+           jobReqId: req.query.jobReqId
+        },
+       
+      });
+         var api_response = {
+            "candidates":response.data
+        }
+    res.send(api_response)
+    } catch (error) {
+        console.log(error.response.data);
+        res.status(error.response.status).send(error.response.data)
+    }
+})
 
 app.listen(PORT, function() {
  console.log("Node server is running..");
