@@ -47,7 +47,7 @@ app.get('/getByJR',async (req,res) => {
             experience:req.query.experience
         }
       });
-    res.send({response.data})
+    res.send(response.data)
     } catch (error) {
         res.status(error.response.status).send(error.response.data)
     }
