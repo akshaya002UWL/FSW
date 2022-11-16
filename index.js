@@ -3,6 +3,8 @@ var app = express(); //creating express instance
 var querystring = require('querystring');
 const axios = require('axios');
 const PORT = process.env.PORT || 5000
+var cors = require('cors')
+app.use(cors())
 
 app.use(express.json())
 
