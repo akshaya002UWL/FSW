@@ -50,7 +50,7 @@ app.get('/getByJR',async (req,res) => {
         }
       });
         var api_response = {
-            "candidates":response.data
+            "instances":response.data
         }
     res.send(api_response)
     } catch (error) {
@@ -77,7 +77,7 @@ app.post('/filterProfiles',async (req,res) => {
        
       });
          var api_response = {
-            "candidates":response.data
+            "instances":response.data
         }
     res.send(api_response)
     } catch (error) {
@@ -103,7 +103,7 @@ app.post('/filterAppliedCandidates',async (req,res) => {
        
       });
          var api_response = {
-            "candidates":response.data
+            "instances":response.data
         }
     res.send(api_response)
     } catch (error) {
