@@ -59,6 +59,7 @@ app.get('/getByJR',async (req,res) => {
 })
 
 app.post('/filterProfiles',async (req,res) => {
+    console.log(req.body)
     var data = req.body.instances
     console.log(data)
     try {
