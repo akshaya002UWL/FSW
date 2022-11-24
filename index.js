@@ -59,8 +59,7 @@ app.get('/getByJR',async (req,res) => {
 })
 
 app.post('/filterProfiles',async (req,res) => {
-    var data = req.body.instance
-    res.send(req.body)
+    var data = req.body.instances
     try {
         var jwt_token = await getJWTToken()
     const axiosInstance = axios.create({
