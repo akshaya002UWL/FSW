@@ -59,9 +59,16 @@ app.get('/getByJR',async (req,res) => {
 })
 
 app.post('/filterProfiles',async (req,res) => {
-    console.log(req.body)
-    var data = req.body.instances
-    console.log(data)
+    var data = req.body;
+    var key = Object.keys(data);
+    var candidate;
+    if(key.length){
+        key = key[0];
+        candidate =data[key];
+    } else {
+        candidate = []
+    }
+    console.log(candidate)
     try {
         var jwt_token = await getJWTToken()
     const axiosInstance = axios.create({
@@ -71,7 +78,7 @@ app.post('/filterProfiles',async (req,res) => {
     });
 
 
-    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/filterProfiles',data,{
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getcandidatesbyjr/api/hello/filterProfiles',candidate,{
         params: {
             organization: req.query.organization,
             skills:req.query.location
