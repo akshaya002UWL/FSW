@@ -130,7 +130,7 @@ app.post('/getJRIdS',async (req,res) => {
             if(key.length){
                 key = key[0];
                 jr = {
-                    "jobRequisitions":data[key]
+                    "jobRequisitions":[data[key]]
                 }
             } else {
                 jr = {}
