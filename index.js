@@ -143,7 +143,7 @@ app.post('/getJRIdS',async (req,res) => {
             });
 
 
-    const response = await axiosInstance.get('https://education-dev.apps.openshift-01.knowis.cloud/getjbr/api/gtjbre/getJRIdS',jr);
+    const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getjbr/api/gtjbre/getJRIdS',jr);
         var api_response = {
         "jobReqId":response.data.jrIdString
     }  
