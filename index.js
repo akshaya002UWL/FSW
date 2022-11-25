@@ -68,7 +68,6 @@ app.post('/filterProfiles',async (req,res) => {
     } else {
         candidate = []
     }
-    console.log(candidate)
     try {
         var jwt_token = await getJWTToken()
     const axiosInstance = axios.create({
@@ -124,7 +123,6 @@ app.post('/filterAppliedCandidates',async (req,res) => {
 app.post('/getJRIdS',async (req,res) => {
     try {
             var data = req.body;
-        console.log(req.body)
             var key = Object.keys(data);
             var jr=[];
             if(key.length){
@@ -145,7 +143,6 @@ app.post('/getJRIdS',async (req,res) => {
 
 
     const response = await axiosInstance.post('https://education-dev.apps.openshift-01.knowis.cloud/getjbr/api/gtjbre/getJRIdS',jr);
-        console.log(response.data)
         var api_response = {
         "jobReqId":response.data.jrIdString
     }  
