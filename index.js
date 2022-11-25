@@ -121,6 +121,38 @@ app.post('/filterAppliedCandidates',async (req,res) => {
     }
 })
 
+app.post('/getJRIdS',async (req,res) => {
+    try {
+            var data = req.body;
+            var key = Object.keys(data);
+            var jr=[];
+            if(key.length){
+                key = key[0];
+                jr = {
+                    "jobRequisitions":data[key]
+                }
+            } else {
+                jr = {}
+            }
+             var jwt_token = await getJWTToken()
+             
+            const axiosInstance = axios.create({
+                headers: { 
+                    'Authorization': 'Bearer '+jwt_token
+                }
+            });
+
+
+    const response = await axiosInstance.get('https://education-dev.apps.openshift-01.knowis.cloud/getjbr/api/gtjbre/getJRIdS',jr);
+        var api_response = {
+        "jobReqId":response.data.jrIdString
+    }  
+    res.send(api_response)
+    } catch (error) {
+        res.status(error.response.status).send(error.response.data)
+    }
+})
+
 app.listen(PORT, function() {
  console.log("Node server is running..");
 });
