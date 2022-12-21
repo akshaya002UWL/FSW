@@ -151,7 +151,15 @@ app.post('/getJRIdS',async (req,res) => {
         res.status(error.response.status).send(error.response.data)
     }
 })
-
+app.get("/xlink",cors(),async(req, res)=>{
+    res.send({
+        comments: "link",
+        value: 'Hello world',
+        __metaData: {
+            url:"https://google.com"
+        }
+    })
+})
 app.listen(PORT, function() {
  console.log("Node server is running..");
 });
